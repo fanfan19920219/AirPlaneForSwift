@@ -22,7 +22,7 @@ let kScreenWidth = CGFloat(UIScreen.main.bounds.size.width)
 
 class ViewController: UIViewController {
     
-    var Hertz:Double = 30.0 //刷屏速度
+    var Hertz:Double = 35.0 //刷屏速度
     
     var centerButton:UIButton!
     
@@ -39,8 +39,8 @@ class ViewController: UIViewController {
     var timer:Timer!
     
     var activeZiDanNum:Int = 3 //控制子弹的发射密集程度
-    var activeDiJiNum:Int = 10 //控制第几的下落速度
-    var DiJiSpace:CGFloat = 5.0 //控制第几的速度
+    var activeDiJiNum:Int = 10 //控制敌机的下落速度
+    var DiJiSpace:CGFloat = 4.0 //控制敌机的速度
     var ZiDanSpace:CGFloat = 30.0 //控制子弹的速度
     
     
@@ -49,14 +49,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         initView()
         createZiDan()
         createDiJi()
         //缓冲
         createBoomView(CGRect.zero)
-        
-        
     }
     
     func initView(){
@@ -101,8 +98,6 @@ class ViewController: UIViewController {
         self.scoreLabel.textAlignment = NSTextAlignment.right
         self.scoreLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(rawValue: 2))
         self.view.addSubview(self.scoreLabel)
-        
-        
         
     }
     
