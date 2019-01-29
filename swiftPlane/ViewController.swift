@@ -9,6 +9,14 @@
 import UIKit
 import CoreFoundation
 
+let planeWidth = CGFloat(33.0)
+let planeHeight = CGFloat(40.0)
+
+let dijiWidth = CGFloat(30.0)
+let dijiHeight = CGFloat(37.0)
+
+
+
 class ViewController: UIViewController {
     
     var bgview1: UIImageView!
@@ -17,22 +25,17 @@ class ViewController: UIViewController {
     var zidanArray: NSMutableArray!
     var dijiArray: NSMutableArray!
     var count = 0
+    var timer:Timer!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib NSLog zhang zhi hua
+        
         initView()
         createZiDan()
         createDiJi()
         self.starMethod()
-        
-        
-        
-        
     }
-    
-    
     
     func initView(){
         
@@ -49,8 +52,15 @@ class ViewController: UIViewController {
         self.planeView = UIImageView()
         //        self.planeView.animationImages = [UIImage(named: "plane1"),UIImage(named: "plane2")] as? [UIImage]
         self.planeView.image = UIImage(named: "plane1")
+        var imgArray = [UIImage]();
+        for i in 1 ... 2{
+            imgArray.append(UIImage(named:"plane\(i)")!)
+        }
+        self.planeView.animationImages=imgArray
+        self.planeView.startAnimating()
         
-        self.planeView.frame = CGRect(x:self.view.frame.width/2 - 20 , y:self.view.frame.height - 60 , width:40 , height:40)
+        
+        self.planeView.frame = CGRect(x:self.view.frame.width/2 - 20 , y:self.view.frame.height - 60 , width:planeWidth , height:planeHeight)
         //        self.planeView.backgroundColor = .red
         
         self.view.addSubview(self.planeView)
@@ -101,9 +111,9 @@ class ViewController: UIViewController {
             //            print("\(zidan)")
             if (diji as! UIImageView).tag==6{
                 (diji as! UIImageView).tag = 5
-                let randomnum : Int = Int(self.view.frame.width)
-                let randomNumberTwo:Int = abs(Int(arc4random_uniform(UInt32(randomnum)))-40)
-                (diji as! UIImageView).frame = CGRect(x:randomNumberTwo , y:-40 , width:40 , height:40)
+                let randomnum : CGFloat = self.view.frame.width
+                let randomNumberTwo:CGFloat = abs(CGFloat(arc4random_uniform(UInt32(randomnum)))-dijiHeight)
+                (diji as! UIImageView).frame = CGRect(x:randomNumberTwo , y:-dijiHeight , width:dijiWidth , height:dijiHeight)
                 break
             }
         }
@@ -145,31 +155,11 @@ class ViewController: UIViewController {
                 for zidan in self.zidanArray{
                     if((zidan as! UIImageView).tag==5){
                         if((diji as! UIImageView).frame.intersects((zidan as! UIImageView).frame)){
-                            print("碰撞了")
                             (zidan as! UIImageView).tag=6
                             (diji as! UIImageView).tag=6
-                            
-                            
-                            
-                            let boomView:UIImageView = UIImageView()
-                            boomView.frame = (diji as! UIImageView).frame
-                            self.view.addSubview(boomView)
-                            var imgArray = [UIImage]();
-                            for i in 1 ... 5{
-                                imgArray.append(UIImage(named:"bz\(i)")!)
-                            }
-                            
-                            // 给动画数组赋值
-                            boomView.animationImages = imgArray
-                            // 设置重复次数, 学过的都知道...0 代表无限循环,其他数字是循环次数,负数效果和0一样...
-                            boomView.animationRepeatCount = 1
-                            // 动画完成所需时间
-                            boomView.animationDuration = 0.5
-                            // 开始动画
+                            createBoomView((diji as! UIImageView).frame)
                             (zidan as! UIImageView).frame = CGRect.zero
                             (diji as! UIImageView).frame = CGRect.zero
-                            boomView.startAnimating()
-                            
                         }
                     }
                 }
@@ -177,9 +167,27 @@ class ViewController: UIViewController {
         }
     }
     
+    func createBoomView(_ frame:CGRect){
+        let boomView:UIImageView = UIImageView()
+        boomView.frame = frame
+        self.view.addSubview(boomView)
+        var imgArray = [UIImage]();
+        for i in 1 ... 5{
+            imgArray.append(UIImage(named:"bz\(i)")!)
+        }
+        // 给动画数组赋值
+        boomView.animationImages = imgArray
+        // 设置重复次数, 学过的都知道...0 代表无限循环,其他数字是循环次数,负数效果和0一样...
+        boomView.animationRepeatCount = 1
+        // 动画完成所需时间
+        boomView.animationDuration = 0.5
+        // 开始动画
+        boomView.startAnimating()
+    }
+    
     
     func starMethod(){
-        let timer =  Timer.scheduledTimer(timeInterval: 0.033, target: self, selector: #selector(update), userInfo: "parameter", repeats: true)
+        self.timer =  Timer.scheduledTimer(timeInterval: 0.033, target: self, selector: #selector(update), userInfo: "parameter", repeats: true)
         
         //        RunLoop.current.add(Timer:timer, forMode: RunLoop.Mode)
         //        let loop = RunLoop.current
