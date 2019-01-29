@@ -13,6 +13,20 @@
 		D47D973721F9BF180067B7E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D47D973621F9BF180067B7E1 /* Assets.xcassets */; };
 		D47D973A21F9BF180067B7E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47D973821F9BF180067B7E1 /* LaunchScreen.storyboard */; };
 		D47D974521F9BF180067B7E1 /* swiftPlaneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47D974421F9BF180067B7E1 /* swiftPlaneTests.swift */; };
+		D47D975D21F9CF500067B7E1 /* zidan1.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D974F21F9CF4E0067B7E1 /* zidan1.png */; };
+		D47D975E21F9CF500067B7E1 /* diji.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975021F9CF4E0067B7E1 /* diji.png */; };
+		D47D975F21F9CF500067B7E1 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975121F9CF4E0067B7E1 /* stop.png */; };
+		D47D976021F9CF500067B7E1 /* bz2.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975221F9CF4F0067B7E1 /* bz2.png */; };
+		D47D976121F9CF500067B7E1 /* bz3.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975321F9CF4F0067B7E1 /* bz3.png */; };
+		D47D976221F9CF500067B7E1 /* zidan.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975421F9CF4F0067B7E1 /* zidan.png */; };
+		D47D976321F9CF500067B7E1 /* bz1.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975521F9CF4F0067B7E1 /* bz1.png */; };
+		D47D976421F9CF500067B7E1 /* zidan2.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975621F9CF4F0067B7E1 /* zidan2.png */; };
+		D47D976521F9CF500067B7E1 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975721F9CF4F0067B7E1 /* start.png */; };
+		D47D976621F9CF500067B7E1 /* bz4.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975821F9CF500067B7E1 /* bz4.png */; };
+		D47D976721F9CF500067B7E1 /* plane1.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975921F9CF500067B7E1 /* plane1.png */; };
+		D47D976821F9CF500067B7E1 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975A21F9CF500067B7E1 /* bg.png */; };
+		D47D976921F9CF500067B7E1 /* bz5.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975B21F9CF500067B7E1 /* bz5.png */; };
+		D47D976A21F9CF500067B7E1 /* plane2.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975C21F9CF500067B7E1 /* plane2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +50,20 @@
 		D47D974021F9BF180067B7E1 /* swiftPlaneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftPlaneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47D974421F9BF180067B7E1 /* swiftPlaneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftPlaneTests.swift; sourceTree = "<group>"; };
 		D47D974621F9BF180067B7E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D47D974F21F9CF4E0067B7E1 /* zidan1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zidan1.png; sourceTree = "<group>"; };
+		D47D975021F9CF4E0067B7E1 /* diji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diji.png; sourceTree = "<group>"; };
+		D47D975121F9CF4E0067B7E1 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
+		D47D975221F9CF4F0067B7E1 /* bz2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bz2.png; sourceTree = "<group>"; };
+		D47D975321F9CF4F0067B7E1 /* bz3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bz3.png; sourceTree = "<group>"; };
+		D47D975421F9CF4F0067B7E1 /* zidan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zidan.png; sourceTree = "<group>"; };
+		D47D975521F9CF4F0067B7E1 /* bz1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bz1.png; sourceTree = "<group>"; };
+		D47D975621F9CF4F0067B7E1 /* zidan2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zidan2.png; sourceTree = "<group>"; };
+		D47D975721F9CF4F0067B7E1 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
+		D47D975821F9CF500067B7E1 /* bz4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bz4.png; sourceTree = "<group>"; };
+		D47D975921F9CF500067B7E1 /* plane1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plane1.png; sourceTree = "<group>"; };
+		D47D975A21F9CF500067B7E1 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		D47D975B21F9CF500067B7E1 /* bz5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bz5.png; sourceTree = "<group>"; };
+		D47D975C21F9CF500067B7E1 /* plane2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plane2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +107,20 @@
 			children = (
 				D47D972F21F9BF150067B7E1 /* AppDelegate.swift */,
 				D47D973121F9BF150067B7E1 /* ViewController.swift */,
+				D47D975A21F9CF500067B7E1 /* bg.png */,
+				D47D975521F9CF4F0067B7E1 /* bz1.png */,
+				D47D975221F9CF4F0067B7E1 /* bz2.png */,
+				D47D975321F9CF4F0067B7E1 /* bz3.png */,
+				D47D975821F9CF500067B7E1 /* bz4.png */,
+				D47D975B21F9CF500067B7E1 /* bz5.png */,
+				D47D975021F9CF4E0067B7E1 /* diji.png */,
+				D47D975921F9CF500067B7E1 /* plane1.png */,
+				D47D975C21F9CF500067B7E1 /* plane2.png */,
+				D47D975721F9CF4F0067B7E1 /* start.png */,
+				D47D975121F9CF4E0067B7E1 /* stop.png */,
+				D47D975421F9CF4F0067B7E1 /* zidan.png */,
+				D47D974F21F9CF4E0067B7E1 /* zidan1.png */,
+				D47D975621F9CF4F0067B7E1 /* zidan2.png */,
 				D47D973321F9BF150067B7E1 /* Main.storyboard */,
 				D47D973621F9BF180067B7E1 /* Assets.xcassets */,
 				D47D973821F9BF180067B7E1 /* LaunchScreen.storyboard */,
@@ -177,9 +219,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D47D976721F9CF500067B7E1 /* plane1.png in Resources */,
+				D47D975D21F9CF500067B7E1 /* zidan1.png in Resources */,
+				D47D976321F9CF500067B7E1 /* bz1.png in Resources */,
+				D47D976621F9CF500067B7E1 /* bz4.png in Resources */,
+				D47D976A21F9CF500067B7E1 /* plane2.png in Resources */,
+				D47D976121F9CF500067B7E1 /* bz3.png in Resources */,
+				D47D976821F9CF500067B7E1 /* bg.png in Resources */,
+				D47D975E21F9CF500067B7E1 /* diji.png in Resources */,
 				D47D973A21F9BF180067B7E1 /* LaunchScreen.storyboard in Resources */,
 				D47D973721F9BF180067B7E1 /* Assets.xcassets in Resources */,
 				D47D973521F9BF150067B7E1 /* Main.storyboard in Resources */,
+				D47D975F21F9CF500067B7E1 /* stop.png in Resources */,
+				D47D976921F9CF500067B7E1 /* bz5.png in Resources */,
+				D47D976221F9CF500067B7E1 /* zidan.png in Resources */,
+				D47D976421F9CF500067B7E1 /* zidan2.png in Resources */,
+				D47D976521F9CF500067B7E1 /* start.png in Resources */,
+				D47D976021F9CF500067B7E1 /* bz2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,13 +417,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HQP7M33CYX;
+				DEVELOPMENT_TEAM = 3HCSUQBR8B;
 				INFOPLIST_FILE = swiftPlane/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Techonology.swiftPlane;
+				PRODUCT_BUNDLE_IDENTIFIER = com.want.hotkidclub.ceo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -379,13 +436,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HQP7M33CYX;
+				DEVELOPMENT_TEAM = 3HCSUQBR8B;
 				INFOPLIST_FILE = swiftPlane/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Techonology.swiftPlane;
+				PRODUCT_BUNDLE_IDENTIFIER = com.want.hotkidclub.ceo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
