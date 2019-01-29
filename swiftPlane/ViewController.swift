@@ -225,6 +225,7 @@ class ViewController: UIViewController {
         var touchlocation = touches.first
 //        print("\(touchlocation?.location(in: self.view))")
         self.planeView.center = (touchlocation?.location(in: self.view))!
+        //a
     }
     
     
