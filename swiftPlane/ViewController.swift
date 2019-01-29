@@ -27,6 +27,9 @@ class ViewController: UIViewController {
         createDiJi()
         self.starMethod()
         
+        
+        
+        
     }
     
     
@@ -59,7 +62,7 @@ class ViewController: UIViewController {
             let zidan = UIImageView.init()
             //            print("create a zidan !")
             zidan.image = UIImage(named:"zidan1")
-            zidan.frame = CGRect(x:40 , y:-40 , width:10 , height:40)
+            zidan.frame = CGRect(x:40 , y:-40 , width:3 , height:20)
             zidan.tag = 6
             self.view.addSubview(zidan)
             self.zidanArray.add(zidan)
@@ -85,7 +88,7 @@ class ViewController: UIViewController {
             if (zidan as! UIImageView).tag==6{
                 (zidan as! UIImageView).tag = 5
                 (zidan as! UIImageView).center = self.planeView.center
-                (zidan as! UIImageView).bounds = CGRect(x:0,y:0,width:10,height:40)
+                (zidan as! UIImageView).bounds = CGRect(x:0,y:0,width:4,height:15)
                 break
             }
         }
@@ -106,8 +109,6 @@ class ViewController: UIViewController {
         }
         
     }
-    
-    
     
     
     func movezidan(){
@@ -137,6 +138,7 @@ class ViewController: UIViewController {
         }
     }
     
+    
     func pengzhuangDijiAndZidan() {
         for diji in self.dijiArray {
             if((diji as! UIImageView).tag==5){
@@ -146,11 +148,28 @@ class ViewController: UIViewController {
                             print("碰撞了")
                             (zidan as! UIImageView).tag=6
                             (diji as! UIImageView).tag=6
+                            
+                            
+                            
+                            let boomView:UIImageView = UIImageView()
+                            boomView.frame = (diji as! UIImageView).frame
+                            self.view.addSubview(boomView)
+                            var imgArray = [UIImage]();
+                            for i in 1 ... 5{
+                                imgArray.append(UIImage(named:"bz\(i)")!)
+                            }
+                            
+                            // 给动画数组赋值
+                            boomView.animationImages = imgArray
+                            // 设置重复次数, 学过的都知道...0 代表无限循环,其他数字是循环次数,负数效果和0一样...
+                            boomView.animationRepeatCount = 1
+                            // 动画完成所需时间
+                            boomView.animationDuration = 0.5
+                            // 开始动画
                             (zidan as! UIImageView).frame = CGRect.zero
                             (diji as! UIImageView).frame = CGRect.zero
+                            boomView.startAnimating()
                             
-                            //CGRectIntersectsRect
-//                            CGRect.intersects(<#T##CGRect#>)
                         }
                     }
                 }
@@ -159,11 +178,8 @@ class ViewController: UIViewController {
     }
     
     
-    
-    
-    
     func starMethod(){
-        let timer =  Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(update), userInfo: "parameter", repeats: true)
+        let timer =  Timer.scheduledTimer(timeInterval: 0.033, target: self, selector: #selector(update), userInfo: "parameter", repeats: true)
         
         //        RunLoop.current.add(Timer:timer, forMode: RunLoop.Mode)
         //        let loop = RunLoop.current
@@ -172,9 +188,7 @@ class ViewController: UIViewController {
         //
         //        RunLoop.current.add(timer, forMode:RunLoop.Mode.common)
         //        RunLoop.current.run()
-        
     }
-    
     
     @objc func update(){
         
@@ -195,7 +209,6 @@ class ViewController: UIViewController {
         if count%10==0{
             jihuoDiji()
         }
-        
         
         movezidan()
         pengzhuangDijiAndZidan()
@@ -221,15 +234,11 @@ class ViewController: UIViewController {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         //        event.
-        
         var touchlocation = touches.first
 //        print("\(touchlocation?.location(in: self.view))")
         self.planeView.center = (touchlocation?.location(in: self.view))!
         //a
     }
-    
-    
-    
     
 }
 
