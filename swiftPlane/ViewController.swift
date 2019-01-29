@@ -32,8 +32,10 @@ class ViewController: UIViewController {
     var zidanArray: NSMutableArray!
     var dijiArray: NSMutableArray!
     var scoreLabel: UILabel!
-    var count = 0
-    var score = 0
+    var count = 0      //计数器
+    var score = 0      //分数
+    var zidanNum = 30  //子弹总数
+    var dijiNum = 30   //敌机总数
     var timer:Timer!
     
     var activeZiDanNum:Int = 3 //控制子弹的发射密集程度
@@ -112,7 +114,7 @@ class ViewController: UIViewController {
     
     func createZiDan(){
         self.zidanArray = NSMutableArray()
-        for _ in 1...30{
+        for _ in 1...self.zidanNum{
             let zidan = UIImageView.init()
             //            print("create a zidan !")
             zidan.image = UIImage(named:"zidan1")
@@ -125,7 +127,7 @@ class ViewController: UIViewController {
     
     func createDiJi(){
         self.dijiArray = NSMutableArray()
-        for _ in 1...30 {
+        for _ in 1...self.dijiNum {
             let diji = UIImageView.init()
             diji.image = UIImage(named:"diji")
             
@@ -172,7 +174,7 @@ class ViewController: UIViewController {
                 temp.origin.y -= self.ZiDanSpace
                 (zidan as! UIImageView).frame = temp
                 if(temp.origin.y < -30){
-                    (zidan as! UIImageView).tag=6
+                    (zidan as! UIImageView).tag = 6
                     (zidan as! UIImageView).frame = CGRect.zero
                 }
                 
