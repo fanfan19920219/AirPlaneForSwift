@@ -22,8 +22,6 @@ let kScreenWidth = CGFloat(UIScreen.main.bounds.size.width)
 
 class ViewController: UIViewController {
     
-    var Hertz:Double = 35.0 //刷屏速度
-    
     var centerButton:UIButton!
     
     var bgview1: UIImageView!
@@ -32,19 +30,22 @@ class ViewController: UIViewController {
     var zidanArray: NSMutableArray!
     var dijiArray: NSMutableArray!
     var scoreLabel: UILabel!
-    var count = 0      //计数器
-    var score = 0      //分数
-    var zidanNum = 30  //子弹总数
-    var dijiNum = 30   //敌机总数
     var timer:Timer!
     
+    /***********************************************/
+    
+    var Hertz:Double = 35.0 //刷屏速度
+    var count = 0      //计数器
+    var score = 0      //分数
+    var zidanNum = 100  //子弹总数
+    var dijiNum = 100   //敌机总数
     var activeZiDanNum:Int = 3 //控制子弹的发射密集程度
     var activeDiJiNum:Int = 10 //控制敌机的下落速度
     var DiJiSpace:CGFloat = 4.0 //控制敌机的速度
     var ZiDanSpace:CGFloat = 30.0 //控制子弹的速度
     
     
-    
+    /***********************************************/
     
     
     override func viewDidLoad() {
@@ -106,7 +107,6 @@ class ViewController: UIViewController {
         self.centerButton.alpha = 0
     }
     
-    
     func createZiDan(){
         self.zidanArray = NSMutableArray()
         for _ in 1...self.zidanNum{
@@ -132,7 +132,6 @@ class ViewController: UIViewController {
         }
     }
     
-    
     func jihuo(){
         for zidan in self.zidanArray{
             //            print("\(zidan)")
@@ -143,9 +142,7 @@ class ViewController: UIViewController {
                 break
             }
         }
-        
     }
-    
     
     func jihuoDiji(){
         for diji in self.dijiArray{
@@ -158,7 +155,6 @@ class ViewController: UIViewController {
                 break
             }
         }
-        
     }
     
     
@@ -172,7 +168,6 @@ class ViewController: UIViewController {
                     (zidan as! UIImageView).tag = 6
                     (zidan as! UIImageView).frame = CGRect.zero
                 }
-                
             }
         }
         
@@ -265,7 +260,6 @@ class ViewController: UIViewController {
         
         movezidan()
         pengzhuangDijiAndZidan()
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
