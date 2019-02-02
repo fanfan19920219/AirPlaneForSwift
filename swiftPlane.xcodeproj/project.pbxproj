@@ -27,7 +27,6 @@
 		D47D976821F9CF500067B7E1 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975A21F9CF500067B7E1 /* bg.png */; };
 		D47D976921F9CF500067B7E1 /* bz5.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975B21F9CF500067B7E1 /* bz5.png */; };
 		D47D976A21F9CF500067B7E1 /* plane2.png in Resources */ = {isa = PBXBuildFile; fileRef = D47D975C21F9CF500067B7E1 /* plane2.png */; };
-		D486287222012E72009BD7D8 /* dijiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D486287122012E72009BD7D8 /* dijiView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +64,6 @@
 		D47D975A21F9CF500067B7E1 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		D47D975B21F9CF500067B7E1 /* bz5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bz5.png; sourceTree = "<group>"; };
 		D47D975C21F9CF500067B7E1 /* plane2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plane2.png; sourceTree = "<group>"; };
-		D486287122012E72009BD7D8 /* dijiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dijiView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +107,6 @@
 			children = (
 				D47D972F21F9BF150067B7E1 /* AppDelegate.swift */,
 				D47D973121F9BF150067B7E1 /* ViewController.swift */,
-				D486287122012E72009BD7D8 /* dijiView.swift */,
 				D47D975A21F9CF500067B7E1 /* bg.png */,
 				D47D975521F9CF4F0067B7E1 /* bz1.png */,
 				D47D975221F9CF4F0067B7E1 /* bz2.png */,
@@ -257,7 +254,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D47D973221F9BF150067B7E1 /* ViewController.swift in Sources */,
-				D486287222012E72009BD7D8 /* dijiView.swift in Sources */,
 				D47D973021F9BF150067B7E1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
