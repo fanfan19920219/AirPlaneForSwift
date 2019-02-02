@@ -144,6 +144,94 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    func jihuo1(){
+        
+        var x  = self.planeView.center.x
+        var y  = self.planeView.center.y
+        var pointArray = [CGPoint(x:x-10,y:y),CGPoint(x:x+10,y:y)]
+        
+        var i:Int = 0
+        for zidan in self.zidanArray{
+            //            print("\(zidan)")
+            if (zidan as! UIImageView).tag==6{
+                (zidan as! UIImageView).tag = 5
+                (zidan as! UIImageView).center = pointArray[i]
+                (zidan as! UIImageView).bounds = CGRect(x:0,y:0,width:4,height:15)
+                i=i+1
+                if(i==2){
+                    i=0
+                    break
+                }
+            }
+        }
+        
+//
+//        for zidan in self.zidanArray{
+//            //            print("\(zidan)")
+//            if (zidan as! UIImageView).tag==6{
+//                (zidan as! UIImageView).tag = 5
+//                (zidan as! UIImageView).center = pointArray[1]
+//                (zidan as! UIImageView).bounds = CGRect(x:0,y:0,width:4,height:15)
+//                break
+//            }
+//        }
+        
+        
+    }
+    
+    
+    func jihuo2(){
+        
+        var x  = self.planeView.center.x
+        var y  = self.planeView.center.y
+        var pointArray = [CGPoint(x:x-10,y:y),CGPoint(x:x+10,y:y),CGPoint(x:x,y:y)]
+        
+        var i:Int = 0
+        for zidan in self.zidanArray{
+            //            print("\(zidan)")
+            if (zidan as! UIImageView).tag==6{
+                (zidan as! UIImageView).tag = 5
+                (zidan as! UIImageView).center = pointArray[i]
+                (zidan as! UIImageView).bounds = CGRect(x:0,y:0,width:4,height:15)
+                i=i+1
+                if(i==3){
+                    i=0
+                    break
+                }
+            }
+        }
+    }
+    
+    
+    
+    func jihuo3(){
+        
+        var x  = self.planeView.center.x
+        var y  = self.planeView.center.y
+        var pointArray = [CGPoint(x:x-5,y:y),CGPoint(x:x+5,y:y),CGPoint(x:x+15,y:y),CGPoint(x:x-15,y:y)]
+        
+        var i:Int = 0
+        for zidan in self.zidanArray{
+            //            print("\(zidan)")
+            if (zidan as! UIImageView).tag==6{
+                (zidan as! UIImageView).tag = 5
+                (zidan as! UIImageView).center = pointArray[i]
+                (zidan as! UIImageView).bounds = CGRect(x:0,y:0,width:4,height:15)
+                i=i+1
+                if(i==4){
+                    i=0
+                    break
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
     func jihuoDiji(){
         for diji in self.dijiArray{
             //            print("\(zidan)")
@@ -251,7 +339,7 @@ class ViewController: UIViewController {
         self.count = self.count+1
         
         if count%self.activeZiDanNum==0{
-            jihuo()
+            jihuo3()
             
         }
         if count%self.activeDiJiNum==0{
