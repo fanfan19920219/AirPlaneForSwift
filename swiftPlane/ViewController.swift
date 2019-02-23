@@ -27,9 +27,10 @@ class ViewController: UIViewController {
     var bgview1: UIImageView!
     var bgview2: UIImageView!
     var planeView: UIImageView!
-    var zidanArray: NSMutableArray!
-    var dijiArray: NSMutableArray!
+    var zidanArray : Array<UIImageView>!
+    var dijiArray: Array<UIImageView>!
     var scoreLabel: UILabel!
+    var zidanAddaLabelArray: Array<UILabel>!
     var timer:Timer!
     
     /***********************************************/
@@ -44,17 +45,20 @@ class ViewController: UIViewController {
     var DiJiSpace:CGFloat = 4.0 //控制敌机的速度
     var ZiDanSpace:CGFloat = 30.0 //控制子弹的速度
     
+    var ZiDanStatus:Int = 0 //控制子弹的状态
     
     /***********************************************/
     
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         initView()
         createZiDan()
         createDiJi()
+        createAddZiDan()
         //缓冲
         createBoomView(CGRect.zero)
+        self.ZiDanStatus = 0
     }
     
     func initView(){
@@ -100,6 +104,7 @@ class ViewController: UIViewController {
         self.scoreLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(rawValue: 2))
         self.view.addSubview(self.scoreLabel)
         
+        
     }
     
     @objc func star(){
@@ -107,8 +112,24 @@ class ViewController: UIViewController {
         self.centerButton.alpha = 0
     }
     
+    func createAddZiDan(){
+        self.zidanAddaLabelArray = Array<UILabel>()
+        
+        for _ in 1...self.dijiNum {
+            var zidanAddaLabel = UILabel()
+            zidanAddaLabel.text = "子弹+1"
+            zidanAddaLabel.font = UIFont.systemFont(ofSize: 5, weight: UIFont.Weight(rawValue: 0.001))
+            zidanAddaLabel.textColor = .black
+            zidanAddaLabel.layer.cornerRadius = 2
+            zidanAddaLabel.tag = 6
+            zidanAddaLabel.frame = CGRect.zero
+            self.zidanAddaLabelArray.append(zidanAddaLabel)
+            self.view.addSubview(zidanAddaLabel)
+        }
+    }
+    
     func createZiDan(){
-        self.zidanArray = NSMutableArray()
+        self.zidanArray = Array<UIImageView>()
         for _ in 1...self.zidanNum{
             let zidan = UIImageView.init()
             //            print("create a zidan !")
@@ -116,34 +137,32 @@ class ViewController: UIViewController {
             zidan.frame = CGRect(x:40 , y:-40 , width:3 , height:20)
             zidan.tag = 6
             self.view.addSubview(zidan)
-            self.zidanArray.add(zidan)
+            self.zidanArray.append(zidan)
         }
     }
     
     func createDiJi(){
-        self.dijiArray = NSMutableArray()
+        self.dijiArray = Array<UIImageView>()
         for _ in 1...self.dijiNum {
             let diji = UIImageView.init()
             diji.image = UIImage(named:"diji")
-            
             diji.tag = 6
             self.view.addSubview(diji)
-            self.dijiArray.add(diji)
+            self.dijiArray.append(diji)
         }
     }
     
     func jihuo(){
         for zidan in self.zidanArray{
             //            print("\(zidan)")
-            if (zidan as! UIImageView).tag==6{
-                (zidan as! UIImageView).tag = 5
-                (zidan as! UIImageView).center = self.planeView.center
-                (zidan as! UIImageView).bounds = CGRect(x:0,y:0,width:4,height:15)
+            if zidan.tag==6{
+                zidan.tag = 5
+                zidan.center = self.planeView.center
+                zidan.bounds = CGRect(x:0,y:0,width:4,height:15)
                 break
             }
         }
     }
-    
     
     func jihuo1(){
         
@@ -154,10 +173,10 @@ class ViewController: UIViewController {
         var i:Int = 0
         for zidan in self.zidanArray{
             //            print("\(zidan)")
-            if (zidan as! UIImageView).tag==6{
-                (zidan as! UIImageView).tag = 5
-                (zidan as! UIImageView).center = pointArray[i]
-                (zidan as! UIImageView).bounds = CGRect(x:0,y:0,width:4,height:15)
+            if (zidan.tag==6){
+                zidan.tag = 5
+                zidan.center = pointArray[i]
+                zidan.bounds = CGRect(x:0,y:0,width:4,height:15)
                 i=i+1
                 if(i==2){
                     i=0
@@ -166,7 +185,6 @@ class ViewController: UIViewController {
             }
         }
         
-//
 //        for zidan in self.zidanArray{
 //            //            print("\(zidan)")
 //            if (zidan as! UIImageView).tag==6{
@@ -176,7 +194,6 @@ class ViewController: UIViewController {
 //                break
 //            }
 //        }
-        
         
     }
     
@@ -190,10 +207,10 @@ class ViewController: UIViewController {
         var i:Int = 0
         for zidan in self.zidanArray{
             //            print("\(zidan)")
-            if (zidan as! UIImageView).tag==6{
-                (zidan as! UIImageView).tag = 5
-                (zidan as! UIImageView).center = pointArray[i]
-                (zidan as! UIImageView).bounds = CGRect(x:0,y:0,width:4,height:15)
+            if (zidan.tag==6){
+                zidan.tag = 5
+                zidan.center = pointArray[i]
+                zidan.bounds = CGRect(x:0,y:0,width:4,height:15)
                 i=i+1
                 if(i==3){
                     i=0
@@ -202,7 +219,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
     
     
     func jihuo3(){
@@ -214,10 +230,10 @@ class ViewController: UIViewController {
         var i:Int = 0
         for zidan in self.zidanArray{
             //            print("\(zidan)")
-            if (zidan as! UIImageView).tag==6{
-                (zidan as! UIImageView).tag = 5
-                (zidan as! UIImageView).center = pointArray[i]
-                (zidan as! UIImageView).bounds = CGRect(x:0,y:0,width:4,height:15)
+            if (zidan.tag==6){
+                zidan.tag = 5
+                zidan.center = pointArray[i]
+                zidan.bounds = CGRect(x:0,y:0,width:4,height:15)
                 i=i+1
                 if(i==4){
                     i=0
@@ -229,17 +245,14 @@ class ViewController: UIViewController {
     
     
     
-    
-    
-    
     func jihuoDiji(){
         for diji in self.dijiArray{
             //            print("\(zidan)")
-            if (diji as! UIImageView).tag==6{
-                (diji as! UIImageView).tag = 5
+            if (diji.tag==6){
+                diji.tag = 5
                 let randomnum : CGFloat = self.view.frame.width
                 let randomNumberTwo:CGFloat = abs(CGFloat(arc4random_uniform(UInt32(randomnum)))-dijiHeight)
-                (diji as! UIImageView).frame = CGRect(x:randomNumberTwo , y:-dijiHeight , width:dijiWidth , height:dijiHeight)
+                diji.frame = CGRect(x:randomNumberTwo , y:-dijiHeight , width:dijiWidth , height:dijiHeight)
                 break
             }
         }
@@ -248,44 +261,59 @@ class ViewController: UIViewController {
     
     func movezidan(){
         for zidan in self.zidanArray{
-            if((zidan as! UIImageView).tag==5){
-                var temp = (zidan as! UIImageView).frame
+            if(zidan.tag==5){
+                var temp = zidan.frame
                 temp.origin.y -= self.ZiDanSpace
-                (zidan as! UIImageView).frame = temp
+                zidan.frame = temp
                 if(temp.origin.y < -30){
-                    (zidan as! UIImageView).tag = 6
-                    (zidan as! UIImageView).frame = CGRect.zero
+                    zidan.tag = 6
+                    zidan.frame = CGRect.zero
                 }
             }
         }
         
+        
         for diji in self.dijiArray {
-            if((diji as! UIImageView).tag==5){
-                var temp = (diji as! UIImageView).frame
+            if(diji.tag==5){
+                var temp = diji.frame
                 temp.origin.y += self.DiJiSpace
-                (diji as! UIImageView).frame = temp
+                diji.frame = temp
                 if(temp.origin.y > self.view.frame.height){
-                    (diji as! UIImageView).tag=6
-                    (diji as! UIImageView).frame = CGRect.zero
+                    diji.tag=6
+                    diji.frame = CGRect.zero
                 }
             }
         }
+        
+//        if(self.zidanAddaLabel.tag==1){
+//            var temp = self.zidanAddaLabel.frame
+//            temp.origin.y += self.DiJiSpace
+//            self.zidanAddaLabel.frame = temp
+//
+//
+//        }
     }
     
     
     func pengzhuangDijiAndZidan() {
         for diji in self.dijiArray {
-            if((diji as! UIImageView).tag==5){
+            if(diji.tag==5){
                 for zidan in self.zidanArray{
-                    if((zidan as! UIImageView).tag==5){
-                        if((diji as! UIImageView).frame.intersects((zidan as! UIImageView).frame)){
-                            (zidan as! UIImageView).tag=6
-                            (diji as! UIImageView).tag=6
-                            createBoomView((diji as! UIImageView).frame)
-                            (zidan as! UIImageView).frame = CGRect.zero
-                            (diji as! UIImageView).frame = CGRect.zero
+                    if(zidan.tag==5){
+                        if(diji.frame.intersects(zidan.frame)){
+                            zidan.tag=6
+                            diji.tag=6
+                            createBoomView(diji.frame)
+                            
+                            for addzidan in self.zidanAddaLabelArray{
+                                
+                            }
+                            //self.zidanAddaLabel.frame = (diji as! UIImageView).frame
+                            zidan.frame = CGRect.zero
+                            diji.frame = CGRect.zero
                             score += 10
                             self.scoreLabel.text = String(format:"%d", score)
+                            
                         }
                     }
                 }
@@ -339,9 +367,24 @@ class ViewController: UIViewController {
         self.count = self.count+1
         
         if count%self.activeZiDanNum==0{
-            jihuo3()
+            if(self.ZiDanStatus==0){
+                jihuo()
+            }
+            
+            if(self.ZiDanStatus==1){
+                jihuo1()
+            }
+            
+            if(self.ZiDanStatus==2){
+                jihuo2()
+            }
+            
+            if(self.ZiDanStatus==3){
+                jihuo3()
+            }
             
         }
+        
         if count%self.activeDiJiNum==0{
             jihuoDiji()
         }
