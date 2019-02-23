@@ -44,6 +44,8 @@ class ViewController: UIViewController {
     var activeDiJiNum:Int = 10 //控制敌机的下落速度
     var DiJiSpace:CGFloat = 4.0 //控制敌机的速度
     var ZiDanSpace:CGFloat = 30.0 //控制子弹的速度
+    var AddZiDanSpace:CGFloat = 1 //控制子弹+1 下落的速度
+    var addzidanRandomNum = 20 //控制宝贝掉落几率 %5
     
     var ZiDanStatus:Int = 0 //控制子弹的状态
     
@@ -110,17 +112,23 @@ class ViewController: UIViewController {
     @objc func star(){
         self.starMethod()
         self.centerButton.alpha = 0
+        self.score = 0
     }
+    
+    
+    
     
     func createAddZiDan(){
         self.zidanAddaLabelArray = Array<UILabel>()
         
         for _ in 1...self.dijiNum {
             var zidanAddaLabel = UILabel()
-            zidanAddaLabel.text = "子弹+1"
-            zidanAddaLabel.font = UIFont.systemFont(ofSize: 5, weight: UIFont.Weight(rawValue: 0.001))
+            zidanAddaLabel.text = "+1"
+            zidanAddaLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight(rawValue: 0.001))
             zidanAddaLabel.textColor = .black
-            zidanAddaLabel.layer.cornerRadius = 2
+            zidanAddaLabel.textAlignment = NSTextAlignment.center
+            zidanAddaLabel.layer.cornerRadius = 10
+            zidanAddaLabel.clipsToBounds = true
             zidanAddaLabel.tag = 6
             zidanAddaLabel.frame = CGRect.zero
             self.zidanAddaLabelArray.append(zidanAddaLabel)
@@ -285,6 +293,19 @@ class ViewController: UIViewController {
             }
         }
         
+        for addZidan in self.zidanAddaLabelArray{
+            if(addZidan.tag==5){
+                var temp = addZidan.frame
+                temp.origin.y += self.AddZiDanSpace
+                addZidan.frame = temp
+                if(temp.origin.y > self.view.frame.height){
+                    addZidan.tag=6
+                    addZidan.frame = CGRect.zero
+                }
+            }
+        }
+        
+        
 //        if(self.zidanAddaLabel.tag==1){
 //            var temp = self.zidanAddaLabel.frame
 //            temp.origin.y += self.DiJiSpace
@@ -298,6 +319,8 @@ class ViewController: UIViewController {
     func pengzhuangDijiAndZidan() {
         for diji in self.dijiArray {
             if(diji.tag==5){
+                
+                
                 for zidan in self.zidanArray{
                     if(zidan.tag==5){
                         if(diji.frame.intersects(zidan.frame)){
@@ -306,7 +329,13 @@ class ViewController: UIViewController {
                             createBoomView(diji.frame)
                             
                             for addzidan in self.zidanAddaLabelArray{
-                                
+                                if(addzidan.tag==6){
+                                    if((arc4random_uniform(UInt32(100)))<self.addzidanRandomNum){
+                                        addzidan.tag = 5
+                                        addzidan.frame = diji.frame
+                                    }
+                                    break
+                                }
                             }
                             //self.zidanAddaLabel.frame = (diji as! UIImageView).frame
                             zidan.frame = CGRect.zero
@@ -317,9 +346,33 @@ class ViewController: UIViewController {
                         }
                     }
                 }
+                if((diji.frame.intersects(self.planeView.frame))){
+                    stopGame()
+                }
             }
         }
     }
+    
+    func pengzhuangADDZidan() {
+        for addzidan in self.zidanAddaLabelArray{
+            if(addzidan.tag == 5){
+                if(addzidan.frame.intersects(self.planeView.frame)){
+                    addzidan.tag = 6
+                    addzidan.frame = CGRect.zero
+                    self.ZiDanStatus += 1
+                    if(self.ZiDanStatus>20){
+                        activeZiDanNum = 2
+                    }
+                    self.score += 100
+                }
+            }
+        }
+        
+    }
+    
+    
+    
+    
     
     func createBoomView(_ frame:CGRect){
         let boomView:UIImageView = UIImageView()
@@ -354,6 +407,30 @@ class ViewController: UIViewController {
         //        RunLoop.current.run()
     }
     
+    func stopGame(){
+        self.timer.invalidate()
+        
+        self.ZiDanStatus = 0
+        self.centerButton.alpha = 1
+        clean()
+    }
+    
+    func clean(){
+        for diji in self.dijiArray{
+            diji.tag = 6
+            diji.frame = CGRect.zero
+        }
+        for zidan in self.zidanArray{
+            zidan.tag = 6
+            zidan.frame = CGRect.zero
+        }
+        for addzidan in self.zidanAddaLabelArray{
+            addzidan.tag = 6
+            addzidan.frame = CGRect.zero
+        }
+    }
+    
+    
     @objc func update(){
         
         if(bgview1.frame.origin.y > self.view.frame.height){
@@ -379,7 +456,7 @@ class ViewController: UIViewController {
                 jihuo2()
             }
             
-            if(self.ZiDanStatus==3){
+            if(self.ZiDanStatus>=3){
                 jihuo3()
             }
             
@@ -391,6 +468,7 @@ class ViewController: UIViewController {
         
         movezidan()
         pengzhuangDijiAndZidan()
+        pengzhuangADDZidan()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
